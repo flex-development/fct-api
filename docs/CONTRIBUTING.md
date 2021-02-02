@@ -15,13 +15,10 @@ well follow our coding guidelines.
 
 ## Getting Started
 
-This project is structured as a monorepo and uses [Lerna][1] with Yarn
-workspaces. All projects are deployed with Vercel.
-
 ### Git Configuration
 
-Copy the [starter Git global configuration](.gitconfig) to stay inline with our
-coding guidelines, as well as begin extending your own workflow.
+Copy the [starter Git global config](.gitconfig) to stay inline with our coding
+guidelines, as well as begin extending your own workflow.
 
 **Note**: The examples below will uses aliases from the starter config.
 
@@ -34,19 +31,22 @@ coding guidelines, as well as begin extending your own workflow.
    yarn # or npm install
    ```
 
-2. Retrieve the following files from a development admin:
-
-   - `fct-api.json`
-
-   Place them in the root of the project directory.
-
-3. To finish configuring your Vercel development environment:
+2. To finish configuring your Vercel development environment:
 
    ```zsh
-   mv fct-api.json ~/.vercel/fct-api.json;
+   vc link;
    ```
 
-4. Run the project!
+   Be sure to select the `Flex Development` scope when prompted:
+
+   ```zsh
+   ? Set up “~/Projects/FLDV/fct-api”? [Y/n] y
+   ? Which scope should contain your project? Flex Development
+   ? Found project “flexdevelopment/fct-api”. Link to it? [Y/n] y
+   ✅  Linked to flexdevelopment/fct-api (created .vercel)
+   ```
+
+3. Run the project!
 
    - `yarn dev:api`: Start development API server on port `8080`
 
