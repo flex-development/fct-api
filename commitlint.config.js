@@ -1,5 +1,3 @@
-const { utils } = require('@commitlint/config-lerna-scopes')
-
 /**
  * @file Commitlint Configuration
  * @see https://commitlint.js.org/#/guides-local-setup
@@ -19,14 +17,10 @@ module.exports = {
    *
    * @see https://www.conventionalcommits.org/
    * @see https://www.npmjs.com/package/@commitlint/config-conventional
-   * @see https://www.npmjs.com/package/@commitlint/config-lerna-scopes
    *
    * @property {Array<string>} extends
    */
-  extends: [
-    '@commitlint/config-conventional',
-    '@commitlint/config-lerna-scopes'
-  ],
+  extends: ['@commitlint/config-conventional'],
 
   /**
    * Resolveable id to package, from node_modules, which formats the output.
@@ -61,16 +55,8 @@ module.exports = {
     /**
      * Returns the rules for valid commit scopes.
      *
-     * Valid scopes include the name of each package (not including scope), as
-     * well as `deps` and `release`.
-     *
-     * @param {object} ctx - Commitlint context
      * @return {Rule} Scope rules
      */
-    'scope-enum': async ctx => [
-      2,
-      'always',
-      [...(await utils.getPackages(ctx)), 'deps', 'release']
-    ]
+    'scope-enum': async () => [2, 'always', []]
   }
 }
