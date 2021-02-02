@@ -1,0 +1,67 @@
+{
+  "name": "@flex-development/fct-api",
+  "description": "Create custom tokens for Firebase via API endpoint.",
+  "keywords": [],
+  "homepage": "https://github.com/flex-development/fct-api",
+  "repository": "git://github.com/flex-development/fct-api.git",
+  "bugs": {
+    "url": "https://github.com/flex-development/fct-api/issues",
+    "email": "developers@flexdevelopment.llc"
+  },
+  "license": "BSD-3-Clause",
+  "author": {
+    "name": "Lexus Drumgold",
+    "email": "lex@flexdevlopment.llc",
+    "url": "https://flexdevelopment.llc"
+  },
+  "scripts": {
+    "vercel:rm": "rm -rf .vercel && mkdir .vercel",
+    "vercel:link": "cp ~/.vercel/fct-api.json .vercel/project.json;",
+    "clean": "rm -rf node_modules; yarn",
+    "format": "prettier --write \"./\"",
+    "lint": "eslint . --ext js,ts --fix --cache",
+    "dev": "vc dev -l 8080",
+    "test": "BABEL_ENV=jest jest --detectOpenHandles --passWithNoTests",
+    "test:quiet": "yarn test || true"
+  },
+  "dependencies": {
+    "@commitlint/format": "^11.0.0",
+    "@types/feathersjs__errors": "^3.3.2",
+    "@types/lodash": "^4.14.155",
+    "@types/node": "^14.0.9",
+    "@types/pino": "^6.3.5",
+    "firebase-admin": "^9.2.0",
+    "lodash": "^4.17.15",
+    "if-env": "^1.0.4",
+    "pino": "^6.11.0",
+    "pino-pretty": "^4.3.0",
+    "tslib": "^2.1.0"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^11.0.0",
+    "@commitlint/config-lerna-scopes": "^11.0.0",
+    "@firebase/rules-unit-testing": "^1.0.9",
+    "@types/jest": "^24.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.2.0",
+    "@typescript-eslint/parser": "^4.2.0",
+    "@vercel/node": "^1.9.0",
+    "babel-eslint": "^10.1.0",
+    "dotenv-cli": "^4.0.0",
+    "eslint": "^7.9.0",
+    "eslint-config-prettier": "^6.12.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jest": "^24.0.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-tree-shaking": "^1.8.0",
+    "husky": "^4.3.0",
+    "jest": "^27.0.0-next.2",
+    "lint-staged": "^10.5.2",
+    "prettier": "^2.0.5",
+    "ts-jest": "^27.0.0-next.3",
+    "typescript": "^4.2.0-beta",
+    "yarn": "^1.22.10"
+  },
+  "required-env": []
+}
