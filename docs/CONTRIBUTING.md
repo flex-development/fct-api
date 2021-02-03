@@ -7,7 +7,7 @@ well follow our coding guidelines.
 
 [Getting Started](#getting-started)  
 [Coding Standards](#coding-standards)  
-[:construction: Making Changes](#🚧-making-changes)  
+[Making Changes](#making-changes)  
 [Testing](#testing)  
 [Documentation](#documentation)  
 [Getting Help](#getting-help)  
@@ -132,9 +132,15 @@ To review our linting guidelines, see our configuration files:
 - Configuration: [`.eslintrc.js`](../.eslintrc.js)`
 - Ignore Patterns: [`.eslintignore`](../.eslintignore)`
 
-## :construction: Making Changes
+## Making Changes
 
-**TODO:** Update documentation.
+### Endpoint
+
+File: `api/index.ts`
+
+### Library
+
+Directory: `lib`
 
 ## Documentation
 
@@ -144,6 +150,8 @@ Before making a pull request, be sure your code is well documented, as it will
 be part of your code review.
 
 ## Testing
+
+Directory: `__tests__`
 
 This project uses [Jest][9] as its test runner. To run the tests in this
 project, run `yarn test`.

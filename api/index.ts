@@ -17,7 +17,7 @@ import type {
  * Generates a custom token.
  *
  * By default, Firebase Admin will **not** throw an error if the user with the
- * UID to create claims for does not exist.
+ * UID to generate a custom token for does not exist.
  *
  * If {@param req.query.user_must_exist}, this endpoint will return an error if
  * such conditions are met.
