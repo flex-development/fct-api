@@ -436,6 +436,13 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
+"@feathersjs/errors@^4.5.3":
+  version "4.5.11"
+  resolved "https://registry.yarnpkg.com/@feathersjs/errors/-/errors-4.5.11.tgz#419b4dd9b557fe7a87978363175cbd5e06f8b3b9"
+  integrity sha512-KzkUqmaV7/SGK6SM/ILXjMI/EHOGKQE4GgDHCsB4+mcIwb8IZboeHL6IkYjh6MvwjKNDyS728McZvcflDGn/fA==
+  dependencies:
+    debug "^4.3.1"
+
 "@firebase/analytics-types@0.4.0":
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/@firebase/analytics-types/-/analytics-types-0.4.0.tgz#d6716f9fa36a6e340bc0ecfe68af325aa6f60508"
@@ -682,6 +689,15 @@
   version "0.4.1"
   resolved "https://registry.yarnpkg.com/@firebase/webchannel-wrapper/-/webchannel-wrapper-0.4.1.tgz#600f2275ff54739ad5ac0102f1467b8963cd5f71"
   integrity sha512-0yPjzuzGMkW1GkrC8yWsiN7vt1OzkMIi9HgxRmKREZl2wnNPOKo/yScTjXf/O57HM8dltqxPF6jlNLFVtc2qdw==
+
+"@flex-development/json@^1.0.5":
+  version "1.0.5"
+  resolved "https://npm.pkg.github.com/download/@flex-development/json/1.0.5/090c5b6aebb7fce58a62a83998ed220180549814a03e79c8d05b4c30b077ef74#bf165d975c01563ae749eaa5aeda59a6c4de7cce"
+  integrity sha512-1UQGN0iPOYx+LpVrb/9xHLr5q1AYpliQkhjpiB3ixBoMEKrBVIjEewCa6kKh9s+gsWnVJGx7/s4/y0bksZNF7w==
+  dependencies:
+    lodash "^4.17.20"
+    lodash-es "^4.17.15"
+    simplytyped "^3.3.0"
 
 "@google-cloud/common@^3.5.0":
   version "3.5.0"
@@ -2452,7 +2468,7 @@ dateformat@^3.0.3:
   resolved "https://registry.yarnpkg.com/dateformat/-/dateformat-3.0.3.tgz#a6e37499a4d9a9cf85ef5872044d62901c9889ae"
   integrity sha512-jyCETtSl3VMZMWeRo7iY1FL19ges1t55hMo5yaam4Jrsm5EPL89UQkoQRyiI+Yf4k8r2ZpdngkV8hr1lIdjb3Q==
 
-debug@4, debug@^4.0.1, debug@^4.1.0, debug@^4.1.1, debug@^4.2.0:
+debug@4, debug@^4.0.1, debug@^4.1.0, debug@^4.1.1, debug@^4.2.0, debug@^4.3.1:
   version "4.3.1"
   resolved "https://registry.yarnpkg.com/debug/-/debug-4.3.1.tgz#f0d229c505e0c6d8c49ac553d1b13dc183f6b2ee"
   integrity sha512-doEwdvm4PCeK4K3RQN2ZC2BYUBaxwLARCqZmMjtF8a51J2Rb0xpVloFRnCODwqjpwnAoao4pelN8l3RJdv3gRQ==
@@ -4828,6 +4844,11 @@ locate-path@^6.0.0:
   dependencies:
     p-locate "^5.0.0"
 
+lodash-es@^4.17.15:
+  version "4.17.20"
+  resolved "https://registry.yarnpkg.com/lodash-es/-/lodash-es-4.17.20.tgz#29f6332eefc60e849f869c264bc71126ad61e8f7"
+  integrity sha512-JD1COMZsq8maT6mnuz1UMV0jvYD0E0aUsSOdrr1/nAG3dhqQXwRRgeW0cSqH1U43INKcqxaiVIQNOUDld7gRDA==
+
 lodash.camelcase@^4.3.0:
   version "4.3.0"
   resolved "https://registry.yarnpkg.com/lodash.camelcase/-/lodash.camelcase-4.3.0.tgz#b28aa6288a2b9fc651035c7711f65ab6190331a6"
@@ -6312,6 +6333,11 @@ signal-exit@^3.0.0, signal-exit@^3.0.2, signal-exit@^3.0.3:
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/signal-exit/-/signal-exit-3.0.3.tgz#a1410c2edd8f077b08b4e253c8eacfcaf057461c"
   integrity sha512-VUJ49FC8U1OxwZLxIbTTrDvLnf/6TDgxZcK8wxR8zs13xpx7xbG60ndBlhNrFi2EMuFRoeDoJO7wthSLq42EjA==
+
+simplytyped@^3.3.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/simplytyped/-/simplytyped-3.3.0.tgz#ed46eef05ebb348ca67ca79df759c49130fd7569"
+  integrity sha512-mz4RaNdKTZiaKXgi6P1k/cdsxV3gz+y1Wh2NXHWD40dExktLh4Xx/h6MFakmQWODZHj/2rKe59acacpL74ZhQA==
 
 sisteransi@^1.0.5:
   version "1.0.5"

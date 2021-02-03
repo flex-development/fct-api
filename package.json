@@ -21,11 +21,13 @@
     "format": "prettier --write \"./\"",
     "lint": "eslint . --ext js,ts --fix --cache",
     "dev": "vc dev -l 8080",
-    "test": "BABEL_ENV=jest jest --detectOpenHandles --passWithNoTests",
+    "test": "jest --detectOpenHandles --passWithNoTests",
     "test:quiet": "yarn test || true"
   },
   "dependencies": {
     "@commitlint/format": "^11.0.0",
+    "@feathersjs/errors": "^4.5.3",
+    "@flex-development/json": "^1.0.5",
     "@types/feathersjs__errors": "^3.3.2",
     "@types/lodash": "^4.14.155",
     "@types/node": "^14.0.9",
@@ -64,6 +66,7 @@
     "yarn": "^1.22.10"
   },
   "required-env": [
+    "NPM_RC",
     "VERCEL_ENV",
     "VERCEL_GIT_COMMIT_REF",
     "VERCEL_GIT_COMMIT_SHA"
