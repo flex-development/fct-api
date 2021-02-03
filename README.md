@@ -83,9 +83,13 @@ Custom claims can also be specified for each user:
 
 ![FCT API - Success Response](./docs/fct-api-response-success.png)
 
+#### With `developerClaims`
+
+![FCT API - Success Response 2](./docs/fct-api-response-success-with-claims.png)
+
 #### With `user_must_exist: false`
 
-![FCT API - Success Response 2](./docs/fct-api-response-success-with-query.png)
+![FCT API - Success Response 3](./docs/fct-api-response-success-with-query.png)
 
 ### Errors
 
