@@ -7,6 +7,7 @@ well follow our coding guidelines.
 
 [Getting Started](#getting-started)  
 [Coding Standards](#coding-standards)  
+[Integrations](#integrations)  
 [Making Changes](#making-changes)  
 [Testing](#testing)  
 [Documentation](#documentation)  
@@ -129,8 +130,25 @@ This project uses [ESLint][7] to lint JavaScript and TypeScript files.
 
 To review our linting guidelines, see our configuration files:
 
-- Configuration: [`.eslintrc.js`](../.eslintrc.js)`
-- Ignore Patterns: [`.eslintignore`](../.eslintignore)`
+- Configuration: [`.eslintrc.js`](../.eslintrc.js)
+- Ignore Patterns: [`.eslintignore`](../.eslintignore)
+
+## Integrations
+
+### Google Analytics
+
+[Google Analytics][8] is a web analytics service that tracks and reports website
+traffic.
+
+The FCT API uses the [Measurement Protocol for Universal Analytics][9] to track
+API requests, success responses, and errors.
+
+**Environment Variables**
+
+- `GA_TRACKING_ID`
+- `VERCEL_ENV`
+- `VERCEL_GIT_COMMIT_REF`
+- `VERCEL_GIT_COMMIT_SHA`
 
 ## Making Changes
 
@@ -144,7 +162,7 @@ Directory: `lib`
 
 ## Documentation
 
-- JavaScript & TypeScript: [JSDoc][8]
+- JavaScript & TypeScript: [JSDoc][10]
 
 Before making a pull request, be sure your code is well documented, as it will
 be part of your code review.
@@ -153,7 +171,7 @@ be part of your code review.
 
 Directory: `__tests__`
 
-This project uses [Jest][9] as its test runner. To run the tests in this
+This project uses [Jest][11] as its test runner. To run the tests in this
 project, run `yarn test`.
 
 Husky is configured to run tests before every push. If a bug report concerning a
@@ -185,5 +203,7 @@ this project.
 [5]: https://github.com/conventional-changelog/commitlint
 [6]: https://prettier.io/
 [7]: https://eslint.org/
-[8]: https://jsdoc.app
-[9]: https://jestjs.io/
+[8]: https://analytics.google.com/analytics/web/
+[9]: https://developers.google.com/analytics/devguides/collection/protocol/v1
+[10]: https://jsdoc.app
+[11]: https://jestjs.io/

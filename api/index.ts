@@ -1,8 +1,10 @@
-import type { FeathersErrorJSON } from '@feathersjs/errors'
+import type { AnyObject } from '@flex-development/json'
 import type { VercelResponse as Res } from '@vercel/node'
 import firebase from 'firebase-admin'
-import { pick } from 'lodash'
-import { createError, createLogger, createServiceAccount } from '../lib'
+import type { PageViewParam } from 'ga-measurement-protocol'
+import isEmpty from 'lodash/isEmpty'
+import pick from 'lodash/pick'
+import { createError, createLogger, createServiceAccount, ga } from '../lib'
 import type {
   CreateCustomTokenRequest as Req,
   CreateCustomTokenResult as Result
@@ -12,6 +14,12 @@ import type {
  * @file Handler - Custom Token Generator
  * @module api
  */
+
+const {
+  VERCEL_ENV: env = '',
+  VERCEL_GIT_COMMIT_REF: branch = '',
+  VERCEL_GIT_COMMIT_SHA: commit = ''
+} = process.env
 
 /**
  * Generates a custom token.
@@ -39,8 +47,26 @@ export default async (req: Req, res: Res): Promise<Res> => {
   const { body = [], headers, method, query, url = '/' } = req
   query.user_must_exist = JSON.parse(`${query?.user_must_exist ?? true}`)
 
+  // Get page path without query
+  const documentPath = url.split('?')[0]
+
+  // Create pageview params object
+  const pageview_params: PageViewParam = {
+    documentHost: req.headers?.host ?? 'unknown',
+    documentPath,
+    documentTitle: 'Create Custom Token'
+  }
+
+  // Attach additional pageview params in Vercel environment
+  if (!isEmpty(branch)) pageview_params.branch = branch
+  if (!isEmpty(commit)) pageview_params.commit = commit
+  if (!isEmpty(env)) pageview_params.env = env
+
+  // Track endpoint view
+  await ga.pageview(pageview_params)
+
   // Initialize logger
-  const Logger = createLogger(url.split('?')[0])
+  const Logger = createLogger(documentPath)
 
   // Only handle `POST` requests
   if (method !== 'POST') return res.json([])
@@ -51,6 +77,9 @@ export default async (req: Req, res: Res): Promise<Res> => {
 
     // Create Firebase Admin credential
     const credential = firebase.credential.cert(service_account)
+
+    // Set identifier for API user using Firebase project ID
+    ga.setUserId(req.headers.project_id)
 
     // Initialize Firebase Admin
     const admin = ((): firebase.app.App => {
@@ -92,12 +121,21 @@ export default async (req: Req, res: Res): Promise<Res> => {
     // Complete batch create custom tokens promise
     const tokens = (await Promise.all(batch)) || []
 
+    // Track success response
+    await ga.event({
+      eventAction: 'create',
+      eventCategory: 'API',
+      eventLabel: 'Custom Token',
+      eventValue: tokens.length
+    })
+
     // Return custom tokens
     return res.json(tokens)
   } catch (err) {
-    let error = {} as FeathersErrorJSON
+    let error: AnyObject = {}
 
     if (err.codePrefix) {
+      // Handle Firebase error
       const { codePrefix, errorInfo } = err
 
       let status = 500
@@ -115,15 +153,31 @@ export default async (req: Req, res: Res): Promise<Res> => {
 
       const data = {
         codePrefix,
-        errors: pick(errorInfo, ['code', 'developerClaims', 'uid']),
-        req: { body, query }
+        errors: pick(errorInfo, ['code', 'developerClaims', 'uid'])
       }
 
       error = createError(err.message, data, status)
     } else {
-      error = createError(err.message, { req: { body, query } })
+      // Handle other errors
+      error = createError(err.message, {})
     }
 
+    // Attach additional error arguments
+    error.data.req = { body, query }
+
+    // Attach additional arguments in Vercel environment
+    if (!isEmpty(branch)) error.data.branch = branch
+    if (!isEmpty(commit)) error.data.commit = commit
+    if (!isEmpty(env)) error.data.env = env
+
+    // Track exceptions
+    await ga.exception({
+      ...error,
+      exceptionDescription: error.message,
+      isExceptionFatal: 0
+    })
+
+    // Log and return error
     Logger.error({ error })
     return res.status(error.code).json(error)
   }
