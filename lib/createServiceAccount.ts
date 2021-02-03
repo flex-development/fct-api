@@ -20,13 +20,13 @@ import type { CreateCustomTokenRequestHeaders as Headers } from './types'
  * 2. Click **Generate New Private Key**; confirm by clicking **Generate Key**
  * 3. Securely store the JSON file containing the key
  *
- * If any keys are missing or an empty string, {@param res} will be used to send
- * an error response back to the client.
+ * If any keys are missing or an empty string, the function will throw an error.
  *
  * @param headers - API request headers containing service account data
  * @param headers.client_email - Firebase client email
  * @param headers.private_key - Firebase private key
  * @param headers.project_id - Firebase project ID
+ * @throws {FeathersErrorJSON}
  */
 const createServiceAccount = (headers: Headers): ServiceAccount => {
   // Pick service account keys from request `headers` object

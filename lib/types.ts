@@ -16,11 +16,19 @@ export type CreateCustomTokenData = {
 }
 
 /**
+ * Object representing a successful custom token creation.
+ */
+export type CreateCustomTokenResult = CreateCustomTokenData & {
+  token: string
+}
+
+/**
  * Shape of requests accepted by the `/` endpoint.
  */
-export interface CreateCustomTokenRequest extends Req {
+export interface CreateCustomTokenRequest extends Omit<Req, 'query'> {
   headers: CreateCustomTokenRequestHeaders
   body: CreateCustomTokenData[]
+  query: { user_must_exist?: boolean }
 }
 
 /**

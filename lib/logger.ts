@@ -37,10 +37,10 @@ const Logger = pino({
  *   values are `development`, `preview`, `production`, or an empty string if
  *   logging in non-Vercel environment
  * - `commit`: The git SHA of the commit the API deployment was triggered by
- * - `namespace:` Value of  {@param namespace}
+ * - `path:` Value of  {@param path}
  *
- * @param namespace - Log namespace
+ * @param path - API request path
  */
-export default (namespace: string): pino.Logger => {
-  return Logger.child({ branch, commit, env, namespace })
+export default (path: string): pino.Logger => {
+  return Logger.child({ branch, commit, env, path })
 }
