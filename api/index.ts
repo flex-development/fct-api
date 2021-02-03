@@ -52,8 +52,13 @@ export default async (req: Req, res: Res): Promise<Res> => {
     // Create Firebase Admin credential
     const credential = firebase.credential.cert(service_account)
 
-    // Initialize Firebase Admin and get Authentication client
-    const admin = firebase.initializeApp({ credential })
+    // Initialize Firebase Admin
+    const admin = ((): firebase.app.App => {
+      if (firebase.apps.length > 0) return firebase.app()
+      return firebase.initializeApp({ credential })
+    })()
+
+    // Get Authentication client
     const auth = admin.auth()
 
     // Batch create custom tokens
