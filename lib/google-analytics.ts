@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from './axios'
 import GA from 'ga-measurement-protocol'
 import { v4 as uuidv4 } from 'uuid'
 
