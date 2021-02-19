@@ -14,7 +14,7 @@ Create custom tokens for Firebase via API endpoint
 
 ## Getting Started
 
-The Firebase Custom Token (FCT) API is a single servless endpoint that can be
+The Firebase Custom Token (FCT) API is a single serverless endpoint that can be
 used to generate custom tokens for Firebase.
 
 For more information, see [Create Custom Tokens][1] from the Firebase docs.
